@@ -1,7 +1,5 @@
 package com.mattjtodd.ignite;
 
-import org.apache.ignite.spi.communication.tcp.TcpCommunicationSpi;
-
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -40,7 +38,7 @@ public class ServicePeers {
        this.port = port;
    }
 
-    static Set<Inet4Address> getAllByName(String dns) throws UnknownHostException {
+    private static Set<Inet4Address> getAllByName(String dns) throws UnknownHostException {
         return Stream
                 .of(InetAddress.getAllByName(dns))
                 .filter(Inet4Address.class::isInstance)
@@ -48,7 +46,7 @@ public class ServicePeers {
                 .collect(Collectors.toSet());
     }
 
-    static Set<Inet4Address> getNetworkAddresses() throws SocketException {
+    private static Set<Inet4Address> getNetworkAddresses() throws SocketException {
         return Collections
                 .list(NetworkInterface.getNetworkInterfaces())
                 .stream()

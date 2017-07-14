@@ -38,8 +38,8 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="servicePeers" class="com.mattjtodd.ignite.ServicePeers">
-        <constructor-arg name="dns" value="tasks.test"/>
-        <constructor-arg name="port" value="47500"/>
+        <constructor-arg name="dns" value="tasks.#{systemEnvironment['IGNITE_SERVICE_NAME']}"/>
+        <constructor-arg name="port" value="#{systemEnvironment['IGNITE_SERVICE_PORT']}"/>
     </bean>
 
     <bean id="ignite.cfg" class="org.apache.ignite.configuration.IgniteConfiguration">
