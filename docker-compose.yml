@@ -1,4 +1,4 @@
-version: "3.1"
+version: "3.3"
 
 services:
   ignite:
@@ -6,11 +6,16 @@ services:
     image: mattjtodd/ignite
     environment:
       - "IGNITE_SERVICE_NAME=ignite"
-      - "IGNITE_SERVICE_PORT=47001"
-    command: /run/secrets/ignite-config
-    secrets:
-      - ignite-config
+      - "IGNITE_SERVICE_PORT=47101"
+    command: /ignite-config.txt
+    configs:
+      - source: ignite-config
+        target: /ignite-config.txt
+    ports:
+      - 8080:8080
+    deploy:
+      replicas: 5
 
-secrets:
+configs:
   ignite-config:
     external: true

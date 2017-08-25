@@ -8,6 +8,7 @@ import java.net.UnknownHostException;
 import java.util.Collections;
 import java.util.NoSuchElementException;
 import java.util.Set;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -17,6 +18,8 @@ public class ServicePeers {
    private final String myAddress;
 
    private final int port;
+
+   private static final Logger LOGGER = Logger.getLogger(ServicePeers.class.getName());
 
    public ServicePeers(String dns, int port) throws UnknownHostException, SocketException {
        Set<Inet4Address> networkAddresses = getNetworkAddresses();
@@ -36,6 +39,10 @@ public class ServicePeers {
                .collect(Collectors.toSet());
 
        this.port = port;
+
+       LOGGER.info("This address: " + myAddress);
+       LOGGER.info("Discovered Peers: " + peers);
+       LOGGER.info("My Port: " + port);
    }
 
     private static Set<Inet4Address> getAllByName(String dns) throws UnknownHostException {
