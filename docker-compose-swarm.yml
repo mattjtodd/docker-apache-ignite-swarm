@@ -1,0 +1,14 @@
+version: "3.3"
+
+networks:
+  ignite:
+    driver: overlay
+
+
+services:
+  ignite:
+    image: apacheignite/ignite
+    networks:
+      - ignite
+    deploy:
+      replicas: 5

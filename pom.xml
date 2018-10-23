@@ -14,7 +14,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <org.apache.ignite.version>2.1.0</org.apache.ignite.version>
+    <org.apache.ignite.version>2.3.0</org.apache.ignite.version>
   </properties>
 
   <build>
@@ -64,6 +64,12 @@
     <dependency>
       <groupId>org.apache.ignite</groupId>
       <artifactId>ignite-rest-http</artifactId>
+      <version>${org.apache.ignite.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.ignite</groupId>
+      <artifactId>ignite-log4j</artifactId>
       <version>${org.apache.ignite.version}</version>
     </dependency>
 

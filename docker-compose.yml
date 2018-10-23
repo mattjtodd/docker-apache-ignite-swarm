@@ -7,7 +7,7 @@ services:
     environment:
       - "IGNITE_SERVICE_NAME=ignite"
       - "IGNITE_SERVICE_PORT=47101"
-    command: /ignite-config.txt
+    command: file:///ignite-config.txt
     configs:
       - source: ignite-config
         target: /ignite-config.txt
